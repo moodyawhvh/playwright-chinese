@@ -1,76 +1,81 @@
 ---
 id: getting-started-cli
-title: "Coding agents"
+title: "编程智能体(Coding agents)"
 ---
 
-## Introduction
+> 🌐 本文档由 [microsoft/playwright](https://github.com/microsoft/playwright) 翻译,英文原版见原项目。
+>
+> 📝 注:本文超过 10000 字符,按约定仅翻译核心章节;命令行示例与代码块保持英文原样。
 
-Playwright comes with `playwright-cli`, a command-line interface for browser automation designed for coding agents. It provides token-efficient browser control through concise CLI commands and installable skills, making it ideal for agents that need to balance browser automation with large codebases and reasoning within limited context windows.
+## 简介
 
-### `playwright-cli` vs Playwright MCP
+Playwright 自带 `playwright-cli`,一个专为编程智能体(coding agents)设计的浏览器自动化命令行界面。它通过简洁的 CLI 命令和可安装的技能(skills)提供省 token 的浏览器控制,非常适合需要在有限上下文窗口内平衡浏览器自动化、大型代码库与推理任务的智能体。
 
-- **`playwright-cli`** is best for **coding agents** (Claude Code, GitHub Copilot, etc.) that favor token-efficient, skill-based workflows. CLI commands avoid loading large tool schemas and verbose accessibility trees into the model context.
-- **MCP** is best for specialized agentic loops that benefit from persistent state and iterative reasoning over page structure, such as exploratory automation or long-running autonomous workflows. See the [MCP getting started guide](./getting-started-mcp.md).
+### `playwright-cli` 与 Playwright MCP 对比
 
-## Prerequisites
+- **`playwright-cli`** 最适合偏好省 token、基于技能工作流的**编程智能体**(Claude Code、GitHub Copilot 等)。CLI 命令避免了向模型上下文加载庞大的工具 schema 和冗长的无障碍树。
+- **MCP** 最适合需要持久状态、对页面结构进行迭代推理的专用智能体循环,例如探索式自动化或长时间运行的自主工作流。参见 [MCP 入门指南](./getting-started-mcp.md)。
 
-Before you begin, make sure you have the following installed:
-- [Node.js](https://nodejs.org/) 20 or newer
-- A coding agent: Claude Code, GitHub Copilot, or similar
+## 前置条件
 
-## Installation
+开始之前,请确保已安装:
 
-Install `playwright-cli` globally:
+- [Node.js](https://nodejs.org/) 20 或更新版本
+- 一个编程智能体:Claude Code、GitHub Copilot 或类似工具
+
+## 安装
+
+全局安装 `playwright-cli`:
 
 ```bash
 npm install -g @playwright/cli@latest
 playwright-cli --help
 ```
 
-Alternatively, install `@playwright/cli` as a local dependency and use `npx`:
+或者将 `@playwright/cli` 安装为本地依赖并通过 `npx` 使用:
 
 ```bash
 npm install -D @playwright/cli@latest
 npx playwright cli --help
 ```
 
-### Installing skills
+### 安装技能
 
-Coding agents like Claude Code and GitHub Copilot can use locally installed skills for richer context about available commands:
+Claude Code、GitHub Copilot 等编程智能体可以使用本地安装的技能,以获得关于可用命令的更丰富上下文:
 
 ```bash
 playwright-cli install --skills
 ```
 
-To share the skills across all your projects, add the `-g` flag to install them into your home directory (`~/.claude/skills` or, with `--skills=agents`, `~/.agents/skills`):
+要在所有项目之间共享技能,加 `-g` 标志将其安装到用户主目录(`~/.claude/skills`,或使用 `--skills=agents` 安装到 `~/.agents/skills`):
 
 ```bash
 playwright-cli install --skills -g
 ```
 
-### Skills-less operation
+### 不用技能的用法
 
-You can also point your agent at the CLI directly and let it discover commands on its own:
+你也可以让智能体直接调用 CLI,由它自行探索可用命令:
 
 ```txt
 Test the "add todo" flow on https://demo.playwright.dev/todomvc using playwright-cli.
 Check playwright-cli --help for available commands.
 ```
 
-## First Steps
+## 起步
 
-### Interactive demo
+### 交互式演示
 
-Try asking your coding agent:
+试着向你的编程智能体提问:
 
 ```txt
 Use playwright skills to test https://demo.playwright.dev/todomvc/.
 Take screenshots for all successful and failing scenarios.
 ```
 
-### Manual walkthrough
+### 手动演练
 
-You can also run commands manually to see how the CLI works:
+你也可以手动运行命令,直观感受 CLI 的工作方式:
 
 ```bash
 playwright-cli open https://demo.playwright.dev/todomvc/ --headed
@@ -82,7 +87,7 @@ playwright-cli check e21
 playwright-cli screenshot
 ```
 
-After each command, the CLI outputs a snapshot of the current page state:
+每条命令执行后,CLI 都会输出当前页面状态的快照:
 
 ```txt
 ### Page
@@ -92,9 +97,9 @@ After each command, the CLI outputs a snapshot of the current page state:
 [Snapshot](.playwright-cli/page-2026-02-14T19-22-42-679Z.yml)
 ```
 
-## Core Commands
+## 核心命令
 
-### Interacting with pages
+### 与页面交互
 
 ```bash
 playwright-cli open [url]               # open browser, optionally navigate to url
@@ -111,16 +116,16 @@ playwright-cli upload <files...>        # upload one or multiple files
 playwright-cli close                    # close the page
 ```
 
-### Targeting elements
+### 定位元素
 
-Use element refs from snapshots to target elements:
+使用快照中的元素 ref 来定位元素:
 
 ```bash
 playwright-cli snapshot                 # get snapshot with element refs
 playwright-cli click e15                # click using a ref
 ```
 
-You can also use CSS or role selectors:
+也可以使用 CSS 或 role 选择器:
 
 ```bash
 playwright-cli click "#main > button.submit"
@@ -128,7 +133,7 @@ playwright-cli click "role=button[name=Submit]"
 playwright-cli click "#footer >> role=button[name=Submit]"
 ```
 
-### Screenshots and snapshots
+### 截图与快照
 
 ```bash
 playwright-cli snapshot                 # capture page snapshot
@@ -140,7 +145,7 @@ playwright-cli screenshot --hires       # capture using device pixels
 playwright-cli pdf                      # save page as PDF
 ```
 
-### Navigation
+### 导航
 
 ```bash
 playwright-cli go-back                  # go back
@@ -148,7 +153,7 @@ playwright-cli go-forward               # go forward
 playwright-cli reload                   # reload the page
 ```
 
-### Keyboard and mouse
+### 键盘与鼠标
 
 ```bash
 playwright-cli press <key>              # press a key (e.g. Enter, ArrowLeft)
@@ -160,7 +165,7 @@ playwright-cli mouseup [button]         # mouse button up
 playwright-cli mousewheel <dx> <dy>     # scroll
 ```
 
-### Tabs
+### 标签页
 
 ```bash
 playwright-cli tab-list                 # list all tabs
@@ -169,7 +174,7 @@ playwright-cli tab-select <index>       # select a tab
 playwright-cli tab-close [index]        # close a tab
 ```
 
-### Network
+### 网络
 
 ```bash
 playwright-cli requests                 # list network requests since page load
@@ -179,7 +184,7 @@ playwright-cli route-list               # list active routes
 playwright-cli unroute [pattern]        # remove routes
 ```
 
-### Storage
+### 存储
 
 ```bash
 playwright-cli state-save [filename]    # save storage state (cookies, localStorage)
@@ -213,13 +218,13 @@ playwright-cli video-chapter <title>    # add chapter marker to video
 playwright-cli video-stop --filename=f  # stop video recording
 ```
 
-## Sessions
+## 会话管理
 
-The CLI keeps the browser profile in memory by default — cookies and storage state are preserved between calls within a session but lost when the browser closes. Use `--persistent` to save the profile to disk.
+CLI 默认将浏览器配置文件(profile)保存在内存中——同一会话内多次调用之间会保留 cookies 和存储状态,但浏览器关闭后即丢失。使用 `--persistent` 可将配置文件保存到磁盘。
 
-### Named sessions
+### 命名会话
 
-Run multiple browser instances for different projects:
+为不同项目运行多个浏览器实例:
 
 ```bash
 playwright-cli open https://playwright.dev
@@ -227,13 +232,13 @@ playwright-cli -s=example open https://example.com --persistent
 playwright-cli list                     # list all sessions
 ```
 
-You can configure your coding agent to use a specific session:
+你可以让编程智能体使用特定会话:
 
 ```bash
 PLAYWRIGHT_CLI_SESSION=todo-app claude .
 ```
 
-### Session management
+### 会话管理命令
 
 ```bash
 playwright-cli list                     # list all sessions
@@ -242,30 +247,30 @@ playwright-cli kill-all                 # forcefully kill all browser processes
 playwright-cli -s=name delete-data      # delete user data for a named session
 ```
 
-## Monitoring
+## 监控
 
-Use `playwright-cli show` to open a visual dashboard for observing and controlling all running browser sessions:
+使用 `playwright-cli show` 打开可视化面板,观察并控制所有正在运行的浏览器会话:
 
 ```bash
 playwright-cli show
 ```
 
-The dashboard provides:
+该面板提供:
 
-- **Session grid** — all active sessions grouped by workspace, each with a live screencast preview, session name, current URL, and page title. Click any session to zoom in.
-- **Session detail** — a live view of the selected session with tab bar, navigation controls, and full remote control. Click into the viewport to take over mouse and keyboard; press Escape to release.
+- **会话网格** — 按工作区分组展示所有活跃会话,每个会话带有实时屏幕预览、会话名称、当前 URL 和页面标题。点击任意会话可放大查看。
+- **会话详情** — 所选会话的实时视图,包含标签页栏、导航控件和完整远程控制。点击视口即可接管鼠标和键盘,按 Escape 释放。
 
-## Configuration
+## 配置
 
-### Headed mode
+### 有头模式
 
-The CLI runs headless by default. To see the browser:
+CLI 默认无头(headless)运行。要看到浏览器界面:
 
 ```bash
 playwright-cli open https://playwright.dev --headed
 ```
 
-### Browser selection
+### 浏览器选择
 
 ```bash
 playwright-cli open --browser=chrome    # use specific browser
@@ -274,43 +279,43 @@ playwright-cli open --browser=webkit
 playwright-cli open --browser=msedge
 ```
 
-### Configuration file
+### 配置文件
 
-For advanced settings, use a JSON config file:
+高级设置可使用 JSON 配置文件:
 
 ```bash
 playwright-cli --config path/to/config.json open example.com
 ```
 
-The CLI also loads `.playwright/cli.config.json` automatically if present. The config file supports browser options, context options, network rules, timeouts, and more. Run `playwright-cli --help` for the full list of options.
+若存在 `.playwright/cli.config.json`,CLI 也会自动加载。配置文件支持浏览器选项、上下文选项、网络规则、超时设置等。运行 `playwright-cli --help` 查看完整选项列表。
 
-### Browser extension
+### 浏览器扩展
 
-Connect to your existing browser tabs instead of launching a new browser:
+连接到你已有的浏览器标签页,而不是启动新浏览器:
 
 ```bash
 playwright-cli attach --extension
 ```
 
-This requires the [Playwright Extension](https://github.com/microsoft/playwright/blob/main/packages/extension/README.md) to be installed.
+这需要先安装 [Playwright Extension](https://github.com/microsoft/playwright/blob/main/packages/extension/README.md)。
 
-## Quick Reference
+## 快速参考
 
-| Action                    | Command                                             |
+| 操作                      | 命令                                                |
 | ------------------------- | --------------------------------------------------- |
-| **Install CLI**           | `npm install -g @playwright/cli@latest`             |
-| **Install skills**        | `playwright-cli install --skills`                   |
-| **Open a page**           | `playwright-cli open https://example.com`           |
-| **Click an element**      | `playwright-cli click e15`                          |
-| **Type text**             | `playwright-cli type "hello world"`                 |
-| **Take a screenshot**     | `playwright-cli screenshot`                         |
-| **Get page snapshot**     | `playwright-cli snapshot`                           |
-| **Run headed**            | `playwright-cli open https://example.com --headed`  |
-| **Use Firefox**           | `playwright-cli open --browser=firefox`             |
-| **Monitor sessions**      | `playwright-cli show`                               |
+| **安装 CLI**              | `npm install -g @playwright/cli@latest`             |
+| **安装技能**              | `playwright-cli install --skills`                   |
+| **打开页面**              | `playwright-cli open https://example.com`           |
+| **点击元素**              | `playwright-cli click e15`                          |
+| **输入文本**              | `playwright-cli type "hello world"`                 |
+| **截图**                  | `playwright-cli screenshot`                         |
+| **获取页面快照**          | `playwright-cli snapshot`                           |
+| **有头模式运行**          | `playwright-cli open https://example.com --headed`  |
+| **使用 Firefox**          | `playwright-cli open --browser=firefox`             |
+| **监控会话**              | `playwright-cli show`                               |
 
-## What's Next
+## 下一步
 
-- [Write tests using web-first assertions, page fixtures, and locators](./writing-tests.md)
-- [Run your tests on CI](./ci-intro.md)
-- [Learn more about the Trace Viewer](./trace-viewer.md)
+- [使用 web-first 断言、page fixture 和定位器编写测试](./writing-tests.md)
+- [在 CI 上运行测试](./ci-intro.md)
+- [进一步了解 Trace Viewer](./trace-viewer.md)

@@ -1,9 +1,11 @@
-# Microsoft Open Source Code of Conduct
+> 🌐 本文档由 [microsoft/playwright](https://github.com/microsoft/playwright) 翻译,英文原版见原项目。
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+# Microsoft 开源行为准则
 
-Resources:
+本项目已采用 [Microsoft 开源行为准则](https://opensource.microsoft.com/codeofconduct/)。
 
-- [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/)
-- [Microsoft Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
-- Contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with questions or concerns
+相关资源:
+
+- [Microsoft 开源行为准则](https://opensource.microsoft.com/codeofconduct/)
+- [Microsoft 行为准则 FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+- 如有疑问或顾虑,请联系 [opencode@microsoft.com](mailto:opencode@microsoft.com)
