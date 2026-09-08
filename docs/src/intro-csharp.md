@@ -1,15 +1,17 @@
 ---
 id: intro
-title: "Installation"
+title: "安装"
 ---
 
-## Introduction
+> 🌐 本文档由 [microsoft/playwright](https://github.com/microsoft/playwright) 翻译,英文原版见原项目。
 
-Playwright was created specifically to accommodate the needs of end-to-end testing. Playwright supports all modern rendering engines including Chromium, WebKit, and Firefox. Test on Windows, Linux, and macOS, locally or on CI, headless or headed with native mobile emulation.
+## 简介
 
-You can choose to use MSTest, NUnit, or xUnit [base classes](./test-runners.md) that Playwright provides to write end-to-end tests. These classes support running tests on multiple browser engines, parallelizing tests, adjusting launch/context options and getting a [Page]/[BrowserContext] instance per test out of the box. Alternatively you can use the [library](./library.md) to manually write the testing infrastructure.
+Playwright 是专为满足端到端测试需求而创建的。它支持所有现代渲染引擎,包括 Chromium、WebKit 和 Firefox。可在 Windows、Linux 和 macOS 上测试,本地或 CI 中运行,支持无头或有头模式,并提供原生移动端模拟。
 
-1. Start by creating a new project with `dotnet new`. This will create the `PlaywrightTests` directory which includes a `UnitTest1.cs` file:
+你可以选择使用 Playwright 提供的 MSTest、NUnit 或 xUnit [基类](./test-runners.md)编写端到端测试。这些类开箱即用地支持:在多种浏览器引擎上运行测试、并行化测试、调整启动/上下文选项,以及为每个测试提供独立的 [Page]/[BrowserContext] 实例。你也可以改用[库](./library.md)自行搭建测试基础设施。
+
+1. 先用 `dotnet new` 创建一个新项目。这会创建包含 `UnitTest1.cs` 文件的 `PlaywrightTests` 目录:
 
 <Tabs
   groupId="test-runners"
@@ -55,7 +57,7 @@ cd PlaywrightTests
 </TabItem>
 </Tabs>
 
-2. Install the necessary Playwright dependencies:
+2. 安装所需的 Playwright 依赖:
 
 <Tabs
   groupId="test-runners"
@@ -97,23 +99,23 @@ dotnet add package Microsoft.Playwright.Xunit.v3
 </TabItem>
 </Tabs>
 
-3. Build the project so the `playwright.ps1` is available inside the `bin` directory:
+3. 构建项目,使 `playwright.ps1` 出现在 `bin` 目录中:
 
 ```bash
 dotnet build
 ```
 
-1. Install required browsers. This example uses `net8.0`, if you are using a different version of .NET you will need to adjust the command and change `net8.0` to your version.
+1. 安装所需的浏览器。本示例使用 `net8.0`;如果你使用其他版本的 .NET,需要相应调整命令,把 `net8.0` 改成你的版本。
 
 ```bash
 pwsh bin/Debug/net8.0/playwright.ps1 install
 ```
 
-If `pwsh` is not available, you will have to [install PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+如果 `pwsh` 不可用,你需要先[安装 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
 
-## Add Example Tests
+## 添加示例测试
 
-Edit the `UnitTest1.cs` file with the code below to create an example end-to-end test:
+用下面的代码编辑 `UnitTest1.cs`,创建一个端到端示例测试:
 
 <Tabs
   groupId="test-runners"
@@ -271,28 +273,28 @@ public class UnitTest1: PageTest
 
 </Tabs>
 
-## Running the Example Tests
+## 运行示例测试
 
-By default tests will be run on Chromium. This can be configured via the `BROWSER` environment variable, or by adjusting the [launch configuration options](./running-tests.md). Tests are run in headless mode meaning no browser will open up when running the tests. Results of the tests and test logs will be shown in the terminal.
+默认情况下,测试会在 Chromium 上运行。可以通过 `BROWSER` 环境变量或调整[启动配置选项](./running-tests.md)来改变。测试以无头模式运行,即运行测试时不会打开浏览器。测试结果和日志会显示在终端中。
 
 ```bash
 dotnet test
 ```
 
-See our doc on [Running and Debugging Tests](./running-tests.md) to learn more about running tests in headed mode, running multiple tests, running specific configurations etc.
+关于有头模式运行、运行多个测试、运行特定配置等更多内容,请参阅[运行与调试测试](./running-tests.md)文档。
 
-## System requirements
+## 系统要求
 
-- Playwright is distributed as a .NET Standard 2.0 library. We recommend .NET 8.
-- Windows 11+, Windows Server 2019+ or Windows Subsystem for Linux (WSL).
-- macOS 14 (Sonoma) or later.
-- Debian 12 / 13, Ubuntu 22.04 / 24.04 / 26.04 (x86-64 or arm64).
+- Playwright 以 .NET Standard 2.0 库的形式分发。推荐使用 .NET 8。
+- Windows 11+、Windows Server 2019+ 或适用于 Linux 的 Windows 子系统(WSL)。
+- macOS 14(Sonoma)或更高版本。
+- Debian 12 / 13,Ubuntu 22.04 / 24.04 / 26.04(x86-64 或 arm64)。
 
-## What's next
+## 下一步
 
-- [Write tests using web first assertions, page fixtures and locators](./writing-tests.md)
-- [Run single test, multiple tests, headed mode](./running-tests.md)
-- [Generate tests with Codegen](./codegen-intro.md)
-- [See a trace of your tests](./trace-viewer-intro.md)
-- [Run tests on CI](./ci-intro.md)
-- [Learn more about the MSTest, NUnit, xUnit and xUnit v3 base classes](./test-runners.md)
+- [使用 web-first 断言、page fixture 和定位器编写测试](./writing-tests.md)
+- [运行单个/多个测试、有头模式](./running-tests.md)
+- [使用 Codegen 生成测试](./codegen-intro.md)
+- [查看测试 trace](./trace-viewer-intro.md)
+- [在 CI 上运行测试](./ci-intro.md)
+- [进一步了解 MSTest、NUnit、xUnit 与 xUnit v3 基类](./test-runners.md)

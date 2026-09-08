@@ -1,27 +1,30 @@
 ---
 id: intro
-title: "Installation"
+title: "安装"
 ---
-## Introduction
 
-Playwright was created specifically to accommodate the needs of end-to-end testing. Playwright supports all modern rendering engines including Chromium, WebKit, and Firefox. Test on Windows, Linux, and macOS, locally or on CI, headless or headed with native mobile emulation.
+> 🌐 本文档由 [microsoft/playwright](https://github.com/microsoft/playwright) 翻译,英文原版见原项目。
 
-The [Playwright library](./library.md) can be used as a general purpose browser automation tool, providing a powerful set of APIs to automate web applications, for both sync and async Python.
+## 简介
 
-This introduction describes the Playwright Pytest plugin, which is the recommended way to write end-to-end tests.
+Playwright 是专为满足端到端测试需求而创建的。它支持所有现代渲染引擎,包括 Chromium、WebKit 和 Firefox。可在 Windows、Linux 和 macOS 上测试,本地或 CI 中运行,支持无头或有头模式,并提供原生移动端模拟。
 
-**You will learn**
+[Playwright 库](./library.md)也可以作为通用浏览器自动化工具使用,为同步和异步 Python 提供一套强大的 API 来自动化 Web 应用。
 
-- [How to install Playwright Pytest](/intro.md#installing-playwright-pytest)
-- [How to run the example test](/intro.md#running-the-example-test)
+本入门文档介绍 Playwright Pytest 插件,这是编写端到端测试的推荐方式。
 
-## Installing Playwright Pytest
+**你将学到**
 
-Playwright recommends using the official [Playwright Pytest plugin](./test-runners.md) to write end-to-end tests. It provides context isolation, running it on multiple browser configurations out of the box.
+- [如何安装 Playwright Pytest](/intro.md#installing-playwright-pytest)
+- [如何运行示例测试](/intro.md#running-the-example-test)
 
-Get started by installing Playwright and running the example test to see it in action.
+## 安装 Playwright Pytest
 
-Install the [Pytest plugin](https://pypi.org/project/pytest-playwright/):
+Playwright 推荐使用官方的 [Playwright Pytest 插件](./test-runners.md)编写端到端测试。它开箱即用地提供上下文隔离,并支持在多种浏览器配置上运行。
+
+先安装 Playwright 并运行示例测试,直观感受它的能力。
+
+安装 [Pytest 插件](https://pypi.org/project/pytest-playwright/):
 
 <Tabs
   groupId="package-managers"
@@ -59,15 +62,15 @@ uv add pytest-playwright
 
 </Tabs>
 
-Install the required browsers:
+安装所需的浏览器:
 
 ```bash
 playwright install
 ```
 
-## Add Example Test
+## 添加示例测试
 
-Create a file that follows the `test_` prefix convention, such as `test_example.py`, inside the current working directory or in a sub-directory with the code below. Make sure your test name also follows the `test_` prefix convention.
+在当前工作目录或子目录中,创建一个遵循 `test_` 前缀约定的文件(例如 `test_example.py`),写入以下代码。注意测试函数名同样要遵循 `test_` 前缀约定。
 
 ```py title="test_example.py"
 import re
@@ -89,17 +92,17 @@ def test_get_started_link(page: Page):
     expect(page.get_by_role("heading", name="Installation")).to_be_visible()
 ```
 
-## Running the Example Test
+## 运行示例测试
 
-By default tests will be run on chromium. This can be configured via the [CLI options](./running-tests.md). Tests are run in headless mode meaning no browser UI will open up when running the tests. Results of the tests and test logs will be shown in the terminal.
+默认情况下,测试会在 Chromium 上运行,可通过 [CLI 选项](./running-tests.md)配置。测试以无头模式运行,即运行测试时不会打开浏览器界面。测试结果和日志会显示在终端中。
 
 ```bash
 pytest
 ```
 
-## Updating Playwright
+## 更新 Playwright
 
-To update Playwright to the latest version run the following command:
+要将 Playwright 更新到最新版本,运行以下命令:
 
 <Tabs
   groupId="package-managers"
@@ -133,16 +136,16 @@ uv add --upgrade pytest-playwright playwright
 </TabItem>
 </Tabs>
 
-## System requirements
+## 系统要求
 
-- Python 3.8 or higher.
-- Windows 11+, Windows Server 2019+ or Windows Subsystem for Linux (WSL).
-- macOS 14 (Sonoma) or later.
-- Debian 12 / 13, Ubuntu 22.04 / 24.04 / 26.04 (x86-64 or arm64).
+- Python 3.8 或更高版本。
+- Windows 11+、Windows Server 2019+ 或适用于 Linux 的 Windows 子系统(WSL)。
+- macOS 14(Sonoma)或更高版本。
+- Debian 12 / 13,Ubuntu 22.04 / 24.04 / 26.04(x86-64 或 arm64)。
 
-## What's next
+## 下一步
 
-- [Write tests using web first assertions, page fixtures and locators](./writing-tests.md)
-- [Run single test, multiple tests, headed mode](./running-tests.md)
-- [Generate tests with Codegen](./codegen.md)
-- [See a trace of your tests](./trace-viewer-intro.md)
+- [使用 web-first 断言、page fixture 和定位器编写测试](./writing-tests.md)
+- [运行单个/多个测试、有头模式](./running-tests.md)
+- [使用 Codegen 生成测试](./codegen.md)
+- [查看测试 trace](./trace-viewer-intro.md)

@@ -1,17 +1,19 @@
 ---
 id: intro
-title: "Installation"
+title: "安装"
 ---
 
-## Introduction
+> 🌐 本文档由 [microsoft/playwright](https://github.com/microsoft/playwright) 翻译,英文原版见原项目。
 
-Playwright was created specifically to accommodate the needs of end-to-end testing. Playwright supports all modern rendering engines including Chromium, WebKit, and Firefox. Test on Windows, Linux, and macOS, locally or on CI, headless or headed with native mobile emulation.
+## 简介
 
-Playwright is distributed as a set of [Maven](https://maven.apache.org/what-is-maven.html) modules. The easiest way to use it is to add one dependency to your project's `pom.xml` as described below. If you're not familiar with Maven please refer to its [documentation](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html).
+Playwright 是专为满足端到端测试需求而创建的。它支持所有现代渲染引擎,包括 Chromium、WebKit 和 Firefox。可在 Windows、Linux 和 macOS 上测试,本地或 CI 中运行,支持无头或有头模式,并提供原生移动端模拟。
 
-## Usage
+Playwright 以一组 [Maven](https://maven.apache.org/what-is-maven.html) 模块的形式发布。最简单的用法是按下文所述在项目的 `pom.xml` 中添加一个依赖。如果你不熟悉 Maven,请先阅读它的[文档](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)。
 
-Get started by installing Playwright and running the example file to see it in action.
+## 用法
+
+先安装 Playwright 并运行示例文件,直观感受它的能力。
 
 <Tabs
   defaultValue="java"
@@ -82,17 +84,17 @@ public class App {
 </TabItem>
 </Tabs>
 
-With the App.java and pom.xml above, compile and execute your new program as follows:
+准备好以上 App.java 和 pom.xml 后,按如下方式编译并运行你的新程序:
 
 ```bash
 mvn compile exec:java -D exec.mainClass="org.example.App"
 ```
 
-Running it downloads the Playwright package and installs browser binaries for Chromium, Firefox and WebKit. To modify this behavior see [installation parameters](./browsers.md#install-browsers).
+首次运行会下载 Playwright 包,并安装 Chromium、Firefox 和 WebKit 的浏览器二进制文件。要修改该行为,参见[安装参数](./browsers.md#install-browsers)。
 
-## First script
+## 第一个脚本
 
-In our first script, we will navigate to `playwright.dev` and take a screenshot in WebKit.
+在第一个脚本中,我们将导航到 `playwright.dev` 并用 WebKit 截图。
 
 ```java
 package org.example;
@@ -112,30 +114,30 @@ public class App {
 }
 ```
 
-By default, Playwright runs the browsers in headless mode. To see the browser UI, [`option: BrowserType.launch.headless`] option to `false`. You can also use [`option: BrowserType.launch.slowMo`] to slow down execution. Learn more in the debugging tools [section](./debug.md).
+默认情况下,Playwright 以无头模式运行浏览器。要看到浏览器界面,将 [`option: BrowserType.launch.headless`] 选项设为 `false`。你也可以使用 [`option: BrowserType.launch.slowMo`] 减慢执行速度。更多信息见调试工具[章节](./debug.md)。
 
 ```java
 playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(50));
 ```
 
-## Running the Example script
+## 运行示例脚本
 
 ```bash
 mvn compile exec:java -D exec.mainClass="org.example.App"
 ```
 
-By default browsers launched with Playwright run headless, meaning no browser UI will open up when running the script. To change that you can pass `new BrowserType.LaunchOptions().setHeadless(false)` when launching the browser.
+默认情况下,由 Playwright 启动的浏览器以无头方式运行,即运行脚本时不会打开浏览器界面。要改变这一点,可在启动浏览器时传入 `new BrowserType.LaunchOptions().setHeadless(false)`。
 
-## System requirements
+## 系统要求
 
-- Java 8 or higher.
-- Windows 11+, Windows Server 2019+ or Windows Subsystem for Linux (WSL).
-- macOS 14 (Sonoma) or later.
-- Debian 12 / 13, Ubuntu 22.04 / 24.04 / 26.04 (x86-64 or arm64).
+- Java 8 或更高版本。
+- Windows 11+、Windows Server 2019+ 或适用于 Linux 的 Windows 子系统(WSL)。
+- macOS 14(Sonoma)或更高版本。
+- Debian 12 / 13,Ubuntu 22.04 / 24.04 / 26.04(x86-64 或 arm64)。
 
-## What's next
+## 下一步
 
-- [Write tests using web first assertions, page fixtures and locators](./writing-tests.md)
-- [Run single test, multiple tests, headed mode](./running-tests.md)
-- [Generate tests with Codegen](./codegen.md)
-- [See a trace of your tests](./trace-viewer-intro.md)
+- [使用 web-first 断言、page fixture 和定位器编写测试](./writing-tests.md)
+- [运行单个/多个测试、有头模式](./running-tests.md)
+- [使用 Codegen 生成测试](./codegen.md)
+- [查看测试 trace](./trace-viewer-intro.md)
