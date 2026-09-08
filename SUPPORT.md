@@ -1,16 +1,18 @@
-# Support
+> 🌐 本文档由 [microsoft/playwright](https://github.com/microsoft/playwright) 翻译,英文原版见原项目。
 
-## How to file issues and get help  
+# 支持
 
-This project uses GitHub issues to track bugs and feature requests. Please search the [existing issues][gh-issues] before filing new ones to avoid duplicates. For new issues, file your bug or feature request as a new issue using corresponding template.
+## 如何提交 Issue 与获取帮助
 
-For help and questions about using this project, please see the [docs site for Playwright][docs].
+本项目使用 GitHub issues 跟踪 bug 和功能请求。提交新 issue 之前,请先搜索[现有 issues][gh-issues],避免重复。对于新问题,请使用对应的模板以新 issue 的形式提交你的 bug 或功能请求。
 
-Join our community [Discord Server][discord-server] to connect with other developers using Playwright and ask questions in our 'help-playwright' forum.
+关于使用本项目的帮助与疑问,请参阅 [Playwright 文档站点][docs]。
 
-## Microsoft Support Policy  
+欢迎加入我们的社区 [Discord 服务器][discord-server],与其他使用 Playwright 的开发者交流,并在 'help-playwright' 论坛中提问。
 
-Support for Playwright is limited to the resources listed above.
+## Microsoft 支持政策
+
+对 Playwright 的支持仅限于上面列出的资源。
 
 [gh-issues]: https://github.com/microsoft/playwright/issues/
 [docs]: https://playwright.dev/
