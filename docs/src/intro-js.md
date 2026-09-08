@@ -1,26 +1,28 @@
 ---
 id: intro
-title: "Installation"
+title: "安装"
 ---
 
-## Introduction
+> 🌐 本文档由 [microsoft/playwright](https://github.com/microsoft/playwright) 翻译,英文原版见原项目。
 
-Playwright Test is an end-to-end test framework for modern web apps. It bundles test runner, assertions, isolation, parallelization and rich tooling. Playwright supports Chromium, WebKit and Firefox on Windows, Linux and macOS, locally or in CI, headless or headed, with native mobile emulation for Chrome (Android) and Mobile Safari.
+## 简介
 
-**You will learn**
+Playwright Test 是面向现代 Web 应用的端到端测试框架,内置测试运行器、断言、隔离机制、并行化以及丰富的配套工具。Playwright 支持 Windows、Linux 和 macOS 上的 Chromium、WebKit 与 Firefox,可在本地或 CI 中以无头或有头方式运行,并为 Chrome(Android)与 Mobile Safari 提供原生移动端模拟。
 
-- [How to install Playwright](/intro.md#installing-playwright)
-- [What's installed](/intro.md#whats-installed)
-- [How to run the example test](/intro.md#running-the-example-test)
-- [How to open the HTML test report](/intro.md#html-test-reports)
+**你将学到**
 
-## Installing Playwright
+- [如何安装 Playwright](/intro.md#installing-playwright)
+- [安装了什么](/intro.md#whats-installed)
+- [如何运行示例测试](/intro.md#running-the-example-test)
+- [如何打开 HTML 测试报告](/intro.md#html-test-reports)
 
-Get started by installing Playwright using one of the following methods.
+## 安装 Playwright
 
-### Using npm, yarn or pnpm
+使用以下任一方式安装 Playwright 即可开始。
 
-The command below either initializes a new project or adds Playwright to an existing one.
+### 使用 npm、yarn 或 pnpm
+
+下面的命令要么初始化一个新项目,要么把 Playwright 添加到现有项目。
 
 <Tabs
   groupId="js-package-manager"
@@ -57,21 +59,21 @@ pnpm create playwright
 
 </Tabs>
 
-When prompted, choose / confirm:
-- TypeScript or JavaScript (default: TypeScript)
-- Tests folder name (default: `tests`, or `e2e` if `tests` already exists)
-- Add a GitHub Actions workflow (recommended for CI)
-- Install Playwright browsers (default: yes)
+按提示选择/确认:
+- TypeScript 还是 JavaScript(默认:TypeScript)
+- 测试文件夹名称(默认:`tests`,若 `tests` 已存在则为 `e2e`)
+- 是否添加 GitHub Actions workflow(CI 推荐)
+- 是否安装 Playwright 浏览器(默认:是)
 
-You can re-run the command later; it does not overwrite existing tests.
+之后可以重新运行该命令;它不会覆盖已有测试。
 
-### Using the VS Code Extension
+### 使用 VS Code 扩展
 
-You can also create and run tests with the [VS Code Extension](./getting-started-vscode.md).
+你也可以使用 [VS Code 扩展](./getting-started-vscode.md)创建并运行测试。
 
-## What's Installed
+## 安装了什么
 
-Playwright downloads required browser binaries and creates the scaffold below.
+Playwright 会下载所需的浏览器二进制文件,并创建如下脚手架。
 
 ```bash
 playwright.config.ts         # Test configuration
@@ -81,13 +83,13 @@ tests/
   example.spec.ts            # Minimal example test
 ```
 
-The [playwright.config](./test-configuration.md) centralizes configuration: target browsers, timeouts, retries, projects, reporters and more. In existing projects dependencies are added to your current `package.json`.
+[playwright.config](./test-configuration.md) 集中管理配置:目标浏览器、超时、重试、项目、报告器等。在现有项目中,依赖会加入你当前的 `package.json`。
 
-`tests/` contains a minimal starter test.
+`tests/` 目录包含一个最小化的入门测试。
 
-## Running the Example Test
+## 运行示例测试
 
-By default tests run headless in parallel across Chromium, Firefox and WebKit (configurable in [playwright.config](./test-configuration.md)). Output and aggregated results display in the terminal.
+默认情况下,测试以无头模式在 Chromium、Firefox 和 WebKit 上并行运行(可在 [playwright.config](./test-configuration.md) 中配置)。输出与汇总结果显示在终端中。
 
 <Tabs
   groupId="js-package-manager"
@@ -126,17 +128,17 @@ pnpm exec playwright test
 
 ![tests running in command line](./images/getting-started/run-tests-cli.png)
 
-Tips:
-- See the browser window: add `--headed`.
-- Run a single project/browser: `--project=chromium`.
-- Run one file: `npx playwright test tests/example.spec.ts`.
-- Open testing UI: `--ui`.
+提示:
+- 想看到浏览器窗口:加 `--headed`。
+- 只运行某个项目/浏览器:`--project=chromium`。
+- 只运行一个文件:`npx playwright test tests/example.spec.ts`。
+- 打开测试 UI:`--ui`。
 
-See [Running Tests](./running-tests.md) for details on filtering, headed mode, sharding and retries.
+过滤、有头模式、分片与重试的详情,参见[运行测试](./running-tests.md)。
 
-## HTML Test Reports
+## HTML 测试报告
 
-After a test run, the [HTML Reporter](./test-reporters.md#html-reporter) provides a dashboard filterable by the browser, passed, failed, skipped, flaky and more. Click a test to inspect errors, attachments and steps. It auto-opens only when failures occur; open manually with the command below.
+测试运行结束后,[HTML 报告器](./test-reporters.md#html-reporter)提供一个可按浏览器、通过、失败、跳过、flaky 等条件筛选的仪表盘。点击某个测试可查看错误、附件和步骤。它只在出现失败时自动打开;也可以用下面的命令手动打开。
 
 <Tabs
   groupId="js-package-manager"
@@ -175,9 +177,9 @@ pnpm exec playwright show-report
 
 ![HTML Report](./images/getting-started/html-report-basic.png)
 
-## Running the Example Test in UI Mode
+## 在 UI 模式下运行示例测试
 
-Run tests with [UI Mode](./test-ui-mode.md) for watch mode, live step view, time travel debugging and more.
+使用 [UI 模式](./test-ui-mode.md)运行测试,可获得 watch 模式、实时步骤视图、时间旅行调试等能力。
 
 <Tabs
   groupId="js-package-manager"
@@ -217,11 +219,11 @@ pnpm exec playwright test --ui
 
 ![UI Mode](./images/getting-started/ui-mode.png)
 
-See the [detailed guide on UI Mode](./test-ui-mode.md) for watch filters, step details and trace integration.
+watch 过滤器、步骤详情与 trace 集成等,参见 [UI 模式详细指南](./test-ui-mode.md)。
 
-## Updating Playwright
+## 更新 Playwright
 
-Update Playwright and download new browser binaries and their dependencies:
+更新 Playwright 并下载新的浏览器二进制文件及其依赖:
 
 <Tabs
   groupId="js-package-manager"
@@ -262,7 +264,7 @@ pnpm exec playwright install --with-deps
 
 </Tabs>
 
-Check your installed version:
+查看已安装版本:
 
 <Tabs
   groupId="js-package-manager"
@@ -300,16 +302,16 @@ pnpm exec playwright --version
 
 </Tabs>
 
-## System requirements
+## 系统要求
 
-- Node.js: latest 22.x, 24.x or 26.x.
-- Windows 11+, Windows Server 2019+ or Windows Subsystem for Linux (WSL).
-- macOS 14 (Sonoma) or later.
-- Debian 12 / 13, Ubuntu 22.04 / 24.04 / 26.04 (x86-64 or arm64).
+- Node.js:最新的 22.x、24.x 或 26.x。
+- Windows 11+、Windows Server 2019+ 或适用于 Linux 的 Windows 子系统(WSL)。
+- macOS 14(Sonoma)或更高版本。
+- Debian 12 / 13,Ubuntu 22.04 / 24.04 / 26.04(x86-64 或 arm64)。
 
-## What's next
+## 下一步
 
-- [Write tests using web-first assertions, fixtures and locators](./writing-tests.md)
-- [Run single or multiple tests; headed mode](./running-tests.md)
-- [Generate tests with Codegen](./codegen-intro.md)
-- [View a trace of your tests](./trace-viewer-intro.md)
+- [使用 web-first 断言、fixture 和定位器编写测试](./writing-tests.md)
+- [运行单个或多个测试;有头模式](./running-tests.md)
+- [使用 Codegen 生成测试](./codegen-intro.md)
+- [查看测试 trace](./trace-viewer-intro.md)
